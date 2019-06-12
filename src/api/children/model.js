@@ -5,7 +5,7 @@ export const ingresoRetiro = id => {
     const connection = mysql.createConnection(mysqlConfig)
     console.log(id)
     connection.connect()
-    var sql = 'SELECT IR.comentario,IR.tipo,IR.id_apoderado,IR.id_tutor,IR.fecha_registro,IR.hora_registro,P.nombre as nombre_parvulario, A.nombre as nombre_apoderado,T.nombre AS nombre_tutor FROM ingresoretiro AS IR INNER JOIN PARVULARIO AS P ON P.id=IR.id_parvulario left join Tutor AS T on T.id=IR.id_tutor left join Apoderado AS A on A.id=IR.id_apoderado WHERE IR.id_parvulo=?'
+    var sql = 'SELECT IR.comentario,IR.tipo,IR.id_apoderado,IR.id_tutor,IR.fecha_registro,IR.hora_registro,P.nombre as nombre_parvulario, A.nombre as nombre_apoderado,T.nombre AS nombre_tutor FROM ingresoretiro AS IR INNER JOIN parvulario AS P ON P.id=IR.id_parvulario left join Tutor AS T on T.id=IR.id_tutor left join apoderado AS A on A.id=IR.id_apoderado WHERE IR.id_parvulo=?'
     connection.query(sql, id, (error, results, field) => {
       if (error) reject(error)
       else {
