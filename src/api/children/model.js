@@ -165,7 +165,7 @@ export const parvulo = dato => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
-    var sql = 'select P.*,A.nombre as apoderado1 from parvulo as P inner join apoparvulo as ap ON p.id=ap.id_parvulo INNER JOIN apoderado AS a ON ap.id_apoderado=a.id WHERE p.id=?'
+    var sql = 'SELECT P.*,A.nombre as apoderado1 from parvulo as P inner join apoparvulo as AP ON P.id=AP.id_parvulo INNER JOIN apoderado AS A ON AP.id_apoderado=A.id WHERE P.id=?'
     connection.query(sql, dato.id, (error, results, field) => {
       if (error) console.log("soy un error", error)
       else resolve(results)
