@@ -133,7 +133,7 @@ export const nuevoParvulo = datos => {
 
 export const parApo = (id, idapo) => {
   return new Promise((resolve, reject) => {
-    var sql = 'insert into apoParvulo(id_parvulo,id_apoderado) values(?);'
+    var sql = 'insert into apoparvulo(id_parvulo,id_apoderado) values(?);'
     var dats = [id, idapo]
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
@@ -178,7 +178,7 @@ export const idApos = id => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
     connection.query(
-      'select id_apoderado from apoParvulo where (id_parvulo=?)',
+      'select id_apoderado from apoparvulo where (id_parvulo=?)',
       id,
       (error, results, field) => {
         if (error) reject(error)
