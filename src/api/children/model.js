@@ -208,7 +208,7 @@ export const editTutor = data => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
-    var sql = "UPDATE TUTOR SET id_parvulo=?,nombre=?,parentesco=?,rut=?,fotografia=? where (id=?)"
+    var sql = "UPDATE tutor SET id_parvulo=?,nombre=?,parentesco=?,rut=?,fotografia=? where (id=?)"
     var dats = [data.id_parvulo, data.nombre, data.parentesco, data.rut, data.fotografia, data.id]
     connection.query(sql, dats, (error, result, field) => {
       if (error) console.log(error)
@@ -311,7 +311,7 @@ export const borrarParvulo = id => {
 
 export const apoderadoParvulo = (id) => {
   return new Promise((resolve, reject) => {
-    var sql = 'SELECT A.* FROM apoderado AS A INNER JOIN APOPARVULO AS AP ON AP.id_apoderado=A.id WHERE AP.id_parvulo=?'
+    var sql = 'SELECT A.* FROM apoderado AS A INNER JOIN apoparvulo AS AP ON AP.id_apoderado=A.id WHERE AP.id_parvulo=?'
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
     connection.query(sql, id, (error, results, field) => {
