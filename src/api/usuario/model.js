@@ -66,7 +66,7 @@ export const setTokenUser = datos => {
 //APODERADOS aQUI
 export const apoderadoParvulo = (id) => {
   return new Promise((resolve, reject) => {
-    var sql = 'SELECT A.* FROM apoderado AS A INNER JOIN APOPARVULO AS AP ON AP.id_apoderado=a.id WHERE AP.id_parvulo=?'
+    var sql = 'SELECT A.* FROM apoderado AS A INNER JOIN APOPARVULO AS AP ON AP.id_apoderado=A.id WHERE AP.id_parvulo=?'
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
     connection.query(sql, id, (error, results, field) => {
@@ -171,7 +171,7 @@ export const hijos = id => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
-    var sql = 'SELECT P.* FROM parvulo AS P INNER JOIN APOPARVULO AS AP ON AP.id_parvulo=p.id WHERE AP.id_apoderado=?'
+    var sql = 'SELECT P.* FROM parvulo AS P INNER JOIN APOPARVULO AS AP ON AP.id_parvulo=P.id WHERE AP.id_apoderado=?'
     connection.query(sql, id, (error, results, field) => {
       if (error) reject(error)
       else resolve(results)
