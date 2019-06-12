@@ -5,7 +5,7 @@ export const ingresoRetiro = id => {
     const connection = mysql.createConnection(mysqlConfig)
     console.log(id)
     connection.connect()
-    var sql = 'SELECT IR.comentario,IR.tipo,IR.id_apoderado,IR.id_tutor,IR.fecha_registro,IR.hora_registro,P.nombre as nombre_parvulario, A.nombre as nombre_apoderado,T.nombre as nombre_tutor FROM ingresoretiro AS IR INNER JOIN PARVULARIO AS P ON P.id=IR.id_parvulario left join Tutor as T on t.id=ir.id_tutor left join Apoderado as A on a.id=ir.id_apoderado WHERE IR.id_parvulo=?'
+    var sql = 'SELECT IR.comentario,IR.tipo,IR.id_apoderado,IR.id_tutor,IR.fecha_registro,IR.hora_registro,P.nombre as nombre_parvulario, A.nombre as nombre_apoderado,T.nombre AS nombre_tutor FROM ingresoretiro AS IR INNER JOIN PARVULARIO AS P ON P.id=IR.id_parvulario left join Tutor AS T on T.id=IR.id_tutor left join Apoderado AS A on A.id=IR.id_apoderado WHERE IR.id_parvulo=?'
     connection.query(sql, id, (error, results, field) => {
       if (error) reject(error)
       else {
@@ -311,7 +311,7 @@ export const borrarParvulo = id => {
 
 export const apoderadoParvulo = (id) => {
   return new Promise((resolve, reject) => {
-    var sql = 'SELECT A.* FROM apoderado AS A INNER JOIN APOPARVULO AS AP ON AP.id_apoderado=a.id WHERE AP.id_parvulo=?'
+    var sql = 'SELECT A.* FROM apoderado AS A INNER JOIN APOPARVULO AS AP ON AP.id_apoderado=A.id WHERE AP.id_parvulo=?'
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
     connection.query(sql, id, (error, results, field) => {
