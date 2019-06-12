@@ -7,7 +7,7 @@ export const obtainAllChats = datos => {
     return new Promise((resolve, reject) => {
         const connection = mysql.createConnection(mysqlConfig)
         connection.connect()
-        var sql = `SELECT C.*,u.nombre,U.fotografia FROM conversacion AS C INNER JOIN ${datos.tabla} AS U ON C.${datos.columna_destino}=U.id WHERE C.${datos.columna}=?`
+        var sql = `SELECT C.*,U.nombre,U.fotografia FROM conversacion AS C INNER JOIN ${datos.tabla} AS U ON C.${datos.columna_destino}=U.id WHERE C.${datos.columna}=?`
         console.log(sql)
         connection.query(sql, datos.id_user, (error, results, field) => {
             if (error) console.log(error)
