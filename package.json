@@ -4,8 +4,8 @@
   "main": "src",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "jest",
+    "start": "node .",
+    "test": "jest ",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "dev": "nodemon -i \"*.test.js\" .",
@@ -51,7 +51,6 @@
     "compression": "^1.7.1",
     "cors": "^2.8.5",
     "express": "^4.16.2",
-    "heroku-cli": "^7.0.9",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.1.0",
     "mongoose-create-unique": "^0.4.4",
